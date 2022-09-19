@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(const LoginApp());
@@ -9,10 +10,9 @@ class LoginApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const LoginPage(),
+      home: LoginPage(),
     );
   }
 }
@@ -24,9 +24,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text("DEEZ NUTS"),
-        ),
+        backgroundColor: Colors.blue[200],
+        title: const Text("Login!"),
       ),
       body: const LoginUi(),
     );
@@ -39,42 +38,86 @@ class LoginUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    print(height);
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: height / 2,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "USERNAME",
-              ),
+    double width = MediaQuery.of(context).size.width;
+    print("Upar vala $height");
+    print("Upar vala $width");
+    return ColoredBox(
+      color: Colors.purple,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [ const Padding(
+              padding: EdgeInsets.only(top : 75.0),
+              child: Text("LOGIN KAR"),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 8.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "PASSWORD",
+              Padding(
+                padding: const EdgeInsets.only(top : 40.0),
+                child: Container(
+    
+                  decoration: const BoxDecoration(
+                     color: Color.fromARGB(255, 144, 202, 249),
+                    borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                 
+                  child: SizedBox(
+                    height: height / 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(30, 85 , 30, 10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              focusColor: Colors.white,
+                              border: OutlineInputBorder(),
+                              labelText: "USERNAME",
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                          child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "PASSWORD",
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 50.0),
+                          child: SizedBox(
+                            height: height * 0.05,
+                            width: width * 0.4,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue.shade400,
+                                shadowColor: Colors.black,
+                                elevation: 10.0
+                              ),
+                              onPressed: () {
+                                Fluttertoast.showToast(
+                msg: "Logged IN!",  // message
+                toastLength: Toast.LENGTH_SHORT, // length
+                gravity: ToastGravity.BOTTOM,    // location
+                                // duration
+      );
+                              },
+                              child: const Text(
+                                "Login",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  print("HELLo");
-                },
-                child: const Text(
-                  "HELLO",
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
