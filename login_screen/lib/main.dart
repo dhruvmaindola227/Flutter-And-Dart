@@ -49,12 +49,11 @@ class LoginUi extends StatelessWidget {
           child: Column(
             children: [ const Padding(
               padding: EdgeInsets.only(top : 75.0),
-              child: Text("LOGIN KAR"),
+              child: Text("Please login"),
             ),
               Padding(
                 padding: const EdgeInsets.only(top : 40.0),
                 child: Container(
-    
                   decoration: const BoxDecoration(
                      color: Color.fromARGB(255, 144, 202, 249),
                     borderRadius: BorderRadius.all(Radius.circular(35))
@@ -76,6 +75,7 @@ class LoginUi extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         const Padding(
                           padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                           child: TextField(
@@ -86,6 +86,7 @@ class LoginUi extends StatelessWidget {
                             ),
                           ),
                         ),
+                        
                         Padding(
                           padding: const EdgeInsets.only(top: 50.0),
                           child: SizedBox(
@@ -99,7 +100,7 @@ class LoginUi extends StatelessWidget {
                               ),
                               onPressed: () {
                                 Fluttertoast.showToast(
-                msg: "Logged IN!",  // message
+                msg: "Logged you in!",  // message
                 toastLength: Toast.LENGTH_SHORT, // length
                 gravity: ToastGravity.BOTTOM,    // location
                                 // duration
